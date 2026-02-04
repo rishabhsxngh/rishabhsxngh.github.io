@@ -1,14 +1,248 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rishabh Singh</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <h1>Rishabh Singh</h1>
-    <p>Data Science student at the University of Michigan.</p>
-    <p>
-      Interested in analytics, sports data, and applied modeling.
-    </p>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="#">RS</a>
+
+        <nav class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <a class="pill" href="https://github.com/rishabhsxngh" target="_blank" rel="noreferrer">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero-inner">
+          <div>
+            <p class="kicker">Data Science • Sports Analytics • Visualization</p>
+            <h1 class="headline">
+              Rishabh Singh
+              <span class="accent">builds analytics tools</span>
+              that turn sports data into decisions.
+            </h1>
+
+            <p class="subhead">
+              Data Science student at the University of Michigan focused on analytics, sports data,
+              and applied modeling. I like building clean dashboards, pipelines, and decision tools.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn primary" href="#projects">View projects</a>
+              <a class="btn" href="https://github.com/rishabhsxngh" target="_blank" rel="noreferrer">GitHub</a>
+              <!-- optional: resume link
+              <a class="btn" href="/resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+              -->
+            </div>
+
+            <div class="meta">
+              <div class="meta-item">
+                <span class="meta-label">Focus</span>
+                <span class="meta-value">NBA + CBB tools, modeling, dashboards</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Stack</span>
+                <span class="meta-value">Python, R, SQL, Shiny, Git</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side card -->
+          <aside class="hero-card">
+            <div class="hero-card-top">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+            </div>
+            <pre class="code">
+<span class="code-muted"># currently working on</span>
+<span class="code-strong">NBA Prospect Evaluation Tool</span>
+
+- shot chart exploration
+- zone FG% + shot diet
+- filters + comparisons
+- clean visuals + storytelling</pre>
+            <div class="hero-card-bottom">
+              <a class="mini-link" href="#projects">See projects ↓</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Projects</h2>
+            <p>Selected work. More coming as I polish and publish.</p>
+          </div>
+
+          <div class="grid">
+            <article class="card">
+              <div class="card-top">
+                <h3>NBA Prospect Evaluation Tool</h3>
+                <p class="tag-row">
+                  <span class="tag">R</span>
+                  <span class="tag">Shiny</span>
+                  <span class="tag">Data Viz</span>
+                </p>
+              </div>
+              <p class="card-body">
+                Interactive Shiny app for exploring shot quality, shot distribution, and efficiency by zone.
+                Designed for quick scouting-style comparisons and clear storytelling.
+              </p>
+              <div class="card-actions">
+                <a class="link" href="https://github.com/rishabhsxngh/nba-prospect-evaluation-tool" target="_blank" rel="noreferrer">
+                  Code →
+                </a>
+                <!-- Add your live demo link when deployed -->
+                <a class="link" href="#" aria-disabled="true" title="Add your deployed Shiny link here">
+                  Live demo →
+                </a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-top">
+                <h3>NBA / Sports Analytics Portfolio</h3>
+                <p class="tag-row">
+                  <span class="tag">Python</span>
+                  <span class="tag">SQL</span>
+                  <span class="tag">Dashboards</span>
+                </p>
+              </div>
+              <p class="card-body">
+                A growing set of sports analytics projects: data pipelines, feature engineering, and visual tools.
+                This card is a placeholder you can swap with your next best project.
+              </p>
+              <div class="card-actions">
+                <a class="link" href="https://github.com/rishabhsxngh" target="_blank" rel="noreferrer">GitHub →</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-top">
+                <h3>Coursework + Research</h3>
+                <p class="tag-row">
+                  <span class="tag">ML</span>
+                  <span class="tag">Inference</span>
+                  <span class="tag">Writing</span>
+                </p>
+              </div>
+              <p class="card-body">
+                Selected class projects and writeups. If you want, we can add a “Writing” section with links
+                and short summaries.
+              </p>
+              <div class="card-actions">
+                <a class="link" href="#contact">Request samples →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="section alt">
+        <div class="container">
+          <div class="section-head">
+            <h2>About</h2>
+            <p>A little context about what I care about and how I work.</p>
+          </div>
+
+          <div class="two-col">
+            <div class="panel">
+              <h3>What I do</h3>
+              <p>
+                I build data products that are easy to use and easy to trust: clean interfaces, transparent
+                metrics, and sensible defaults. I like projects where the output informs a real decision.
+              </p>
+              <ul class="bullets">
+                <li>Sports analytics tools (NBA, college basketball)</li>
+                <li>Data pipelines and reproducible workflows</li>
+                <li>Applied modeling and evaluation</li>
+              </ul>
+            </div>
+
+            <div class="panel">
+              <h3>What I’m looking for</h3>
+              <p>
+                Internships and roles where I can ship real analytics and product features. If you are building
+                tools around data, I want to help.
+              </p>
+              <div class="small-grid">
+                <div class="mini">
+                  <span class="mini-label">Interested in</span>
+                  <span class="mini-value">Data Science, Analytics, SWE</span>
+                </div>
+                <div class="mini">
+                  <span class="mini-label">Domains</span>
+                  <span class="mini-value">Sports, consumer apps, fintech</span>
+                </div>
+                <div class="mini">
+                  <span class="mini-label">Tools</span>
+                  <span class="mini-value">R, Python, SQL, Git</span>
+                </div>
+                <div class="mini">
+                  <span class="mini-label">Based</span>
+                  <span class="mini-value">Ann Arbor / NYC</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Contact</h2>
+            <p>Best way to reach me: email + GitHub.</p>
+          </div>
+
+          <div class="contact-row">
+            <!-- Replace with your real email -->
+            <a class="btn primary" href="mailto:YOUR_EMAIL_HERE">Email me</a>
+            <a class="btn" href="https://github.com/rishabhsxngh" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container footer-inner">
+          <span>© <span id="year"></span> Rishabh Singh</span>
+          <span class="footer-right">
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </span>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
-
