@@ -441,18 +441,4 @@ a {
   }
 }
 
-.headshot-wrap {
-  display: flex;
-  justify-content: center;
-  padding: 18px 0 6px;
-}
-
-.headshot {
-  width: 120px;
-  height: 120px;
-  border-radius: 999px;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-}
 
