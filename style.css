@@ -126,25 +126,53 @@ a {
   color: var(--accent2);
 }
 
-/* Reserve stable space for the changing phrase, prevents layout shift */
+/* One-line rotating phrase (no extra vertical space) */
 .typewrap {
   display: inline-block;
   vertical-align: baseline;
   line-height: 1.04;
-  min-height: calc(2 * 1.04em);
-  max-width: 16ch;
-  white-space: normal;
+  white-space: nowrap;
+  min-height: 0;
+  max-width: 100%;
 }
 
 /* Fade swap effect for headline phrase */
 .fade-swap {
   display: inline-block;
-  transition: opacity 300ms ease;
+  transition: opacity 350ms ease;
   opacity: 1;
 }
 
 .fade-swap.is-fading {
   opacity: 0;
+}
+
+/* Recruiter-facing role line under headline */
+.roleline {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 62ch;
+}
+
+.roleline strong {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Proof bullets under headline */
+.proof {
+  margin: 0 0 22px;
+  padding-left: 18px;
+  color: var(--muted);
+  max-width: 58ch;
+}
+
+.proof li {
+  margin: 8px 0;
+}
+
+.proof strong {
+  color: var(--text);
 }
 
 .subhead {
@@ -185,22 +213,6 @@ a {
 
 .btn.primary:hover {
   filter: brightness(1.05);
-}
-
-/* Proof bullets under headline */
-.proof {
-  margin: 0 0 22px;
-  padding-left: 18px;
-  color: var(--muted);
-  max-width: 58ch;
-}
-
-.proof li {
-  margin: 8px 0;
-}
-
-.proof strong {
-  color: var(--text);
 }
 
 .meta {
@@ -527,6 +539,13 @@ a {
 
 @keyframes caretBlink {
   50% { opacity: 0; }
+}
+
+@media (max-width: 520px) {
+  .typewrap {
+    white-space: nowrap;
+    font-size: 0.9em;
+  }
 }
 
 @media (max-width: 920px) {
