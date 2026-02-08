@@ -511,6 +511,18 @@ a {
   line-height: 1;
 }
 
+.typewrap {
+  display: inline-block;
+  vertical-align: baseline;
+  line-height: 1.04;
+
+  /* reserve space for 2 lines to prevent layout shift */
+  min-height: calc(2 * 1.04em);
+
+  /* control wrapping width of the typed phrase */
+  max-width: 16ch;
+  white-space: normal;
+}
 
 
 
