@@ -147,6 +147,73 @@ a {
   opacity: 0;
 }
 
+/* ---------------------------------------
+   Headline signal (fading lines between "I" and rotating phrase)
+--------------------------------------- */
+
+.headline-signal {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 12px;
+  vertical-align: baseline;
+  transform: translateY(-0.08em);
+  opacity: 0.9;
+}
+
+.sig {
+  width: 26px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(124, 92, 255, 0.0),
+    rgba(124, 92, 255, 0.55),
+    rgba(67, 217, 173, 0.65),
+    rgba(67, 217, 173, 0.0)
+  );
+  animation: sigFade 2.8s ease-in-out infinite;
+  opacity: 0.25;
+}
+
+.sig-2 {
+  width: 34px;
+  animation-delay: 0.25s;
+  opacity: 0.35;
+}
+
+.sig-3 {
+  width: 22px;
+  animation-delay: 0.5s;
+  opacity: 0.22;
+}
+
+@keyframes sigFade {
+  0% { opacity: 0.18; }
+  45% { opacity: 0.85; }
+  100% { opacity: 0.18; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sig {
+    animation: none;
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 520px) {
+  .headline-signal {
+    gap: 8px;
+    margin: 0 10px;
+    transform: translateY(-0.06em);
+  }
+  .sig { width: 18px; }
+  .sig-2 { width: 22px; }
+  .sig-3 { width: 16px; }
+}
+
+/* --------------------------------------- */
+
 /* Recruiter-facing role line under headline */
 .roleline {
   margin: 0 0 16px;
