@@ -26,7 +26,7 @@
           <a href="#experience">Experience</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
-          <a href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+          <a href="Singh_Rishabh_Resume(W25).pdf" target="_blank" rel="noreferrer">Resume</a>
           <a class="pill" href="https://github.com/rishabhsxngh" target="_blank" rel="noreferrer">GitHub</a>
         </nav>
       </div>
@@ -39,7 +39,7 @@
           <div>
             <p class="kicker">Data Analyst • ETL Pipelines • Analytics Engineering</p>
 
-            <!-- FADING HEADER LOOP -->
+            <!-- FADING HEADER LOOP (ONE LINE, NO WRAP) -->
             <h1 class="headline">
               What's up! I'm Rishabh Singh, and I
               <span class="accent typewrap">
@@ -47,6 +47,11 @@
               </span>
               for enterprise AI and finance.
             </h1>
+
+            <!-- Recruiter-facing role signal -->
+            <p class="roleline">
+              <strong>Target roles:</strong> Data Science Intern · Analytics Engineering Intern · SWE (Data)
+            </p>
 
             <ul class="proof">
               <li><strong>100k+ records/week</strong> processed via Python ETL pipelines (AfterQuery Experts)</li>
@@ -56,7 +61,7 @@
 
             <div class="cta-row">
               <a class="btn primary" href="#projects">View projects</a>
-              <a class="btn" href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+              <a class="btn" href="Singh_Rishabh_Resume(W25).pdf" target="_blank" rel="noreferrer">Resume</a>
               <a class="btn" href="https://github.com/rishabhsxngh" target="_blank" rel="noreferrer">GitHub</a>
               <a class="btn" href="https://www.linkedin.com/in/rishabhsingh2027" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
@@ -373,7 +378,7 @@
 
           <div class="contact-row">
             <a class="btn primary" href="mailto:rishps@umich.edu">Email me</a>
-            <a class="btn" href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+            <a class="btn" href="Singh_Rishabh_Resume(W25).pdf" target="_blank" rel="noreferrer">Resume</a>
             <a class="btn" href="https://github.com/rishabhsxngh" target="_blank" rel="noreferrer">GitHub</a>
             <a class="btn" href="https://www.linkedin.com/in/rishabhsingh2027" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
@@ -388,7 +393,7 @@
             <a href="#experience">Experience</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
-            <a href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+            <a href="Singh_Rishabh_Resume(W25).pdf" target="_blank" rel="noreferrer">Resume</a>
           </span>
         </div>
       </footer>
@@ -397,18 +402,18 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Fading headline loop
+      // Fading headline loop (one-line phrases)
       const el = document.getElementById("headlineType");
       const phrases = [
         "build data pipelines",
         "build analytics tools",
         "ship ETL systems",
         "automate reporting workflows",
-        "turn messy data into decisions"
+        "turn data into decisions"
       ];
 
-      const holdMs = 2000;
-      const fadeMs = 300;
+      const holdMs = 3200; // longer hold
+      const fadeMs = 350;  // smoother fade
 
       let i = 0;
       el.textContent = phrases[i];
