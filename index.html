@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,20 +40,22 @@
           <div>
             <p class="kicker">Data Analyst • ETL Pipelines • Analytics Engineering</p>
 
-           <h1 class="headline">
-  What's up! I'm Rishabh Singh, and I
-  <span class="headline-signal" aria-hidden="true">
-    <span class="sig sig-1"></span>
-    <span class="sig sig-2"></span>
-    <span class="sig sig-3"></span>
-  </span>
-  <span class="accent typewrap">
-    <span id="headlineType" class="fade-swap"></span>
-  </span>
-  for data-driven teams.
-</h1>
-
-
+            <h1 class="headline">
+              What's up! I'm Rishabh Singh, and I
+              <span class="headline-signal" aria-hidden="true">
+                <span class="sig sig-1"></span>
+                <span class="sig sig-2"></span>
+                <span class="sig sig-3"></span>
+              </span>
+              <span class="accent typewrap">
+                <span
+                  id="headlineType"
+                  class="fade-swap"
+                  data-phrases="build data pipelines|build analytics tools|ship ETL systems|automate reporting workflows|turn data into decisions"
+                ></span>
+              </span>
+              for data-driven teams.
+            </h1>
 
             <!-- Recruiter-facing role signal -->
             <p class="roleline">
@@ -232,7 +235,6 @@
               rel="noreferrer"
             >
               <div class="project-tile__media">
-                <!-- Replace with your screenshot path -->
                 <img src="assets/projects/saas-dashboard.png" alt="SaaS Growth Analytics Dashboard preview" />
               </div>
               <div class="project-tile__overlay">
@@ -413,4 +415,54 @@
         <div class="container footer-inner">
           <span>© <span id="year"></span> Rishabh Singh</span>
           <span class="footer-right">
-            <a href="#projects">Projects
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="Singh_Rishabh_Resume(W25).pdf" target="_blank" rel="noreferrer">Resume</a>
+          </span>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      // Footer year
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Fading headline loop (phrases come from data-phrases)
+      document.addEventListener("DOMContentLoaded", () => {
+        const el = document.getElementById("headlineType");
+        if (!el) return;
+
+        const raw = el.getAttribute("data-phrases") || "";
+        const phrases = raw
+          .split("|")
+          .map((s) => s.trim())
+          .filter(Boolean);
+
+        if (!phrases.length) return;
+
+        const holdMs = 3200;
+        const fadeMs = 350;
+
+        let i = 0;
+        el.textContent = phrases[i];
+
+        // Respect reduced motion
+        const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduceMotion) return;
+
+        setInterval(() => {
+          el.classList.add("is-fading");
+
+          setTimeout(() => {
+            i = (i + 1) % phrases.length;
+            el.textContent = phrases[i];
+            el.classList.remove("is-fading");
+          }, fadeMs);
+        }, holdMs);
+      });
+    </script>
+  </body>
+</html>
