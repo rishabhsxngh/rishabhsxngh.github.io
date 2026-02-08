@@ -26,6 +26,7 @@
           <a href="#experience">Experience</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
+          <a href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
           <a class="pill" href="https://github.com/rishabhsxngh" target="_blank" rel="noreferrer">GitHub</a>
         </nav>
       </div>
@@ -38,25 +39,24 @@
           <div>
             <p class="kicker">Data Analyst • ETL Pipelines • Analytics Engineering</p>
 
-            <!-- LOOPING TYPING HEADER -->
+            <!-- FADING HEADER LOOP -->
             <h1 class="headline">
-  What's up! I'm Rishabh Singh, and I
-  <span class="accent typewrap">
-    <span id="headlineType"></span><span class="caret"></span>
-  </span>
-  for enterprise AI and finance.
-</h1>
-
+              What's up! I'm Rishabh Singh, and I
+              <span class="accent typewrap">
+                <span id="headlineType" class="fade-swap"></span>
+              </span>
+              for enterprise AI and finance.
+            </h1>
 
             <ul class="proof">
-  <li><strong>100k+ records/week</strong> processed via Python ETL pipelines (AfterQuery Experts)</li>
-  <li><strong>~25% faster</strong> pipeline runtime through optimized validation and batching</li>
-  <li><strong>$10B+ vendor spend</strong> analyzed across <strong>135+</strong> universities (Academic Analytics)</li>
-</ul>
-
+              <li><strong>100k+ records/week</strong> processed via Python ETL pipelines (AfterQuery Experts)</li>
+              <li><strong>~25% faster</strong> pipeline runtime through optimized validation and batching</li>
+              <li><strong>$10B+ vendor spend</strong> analyzed across <strong>135+</strong> universities (Academic Analytics)</li>
+            </ul>
 
             <div class="cta-row">
               <a class="btn primary" href="#projects">View projects</a>
+              <a class="btn" href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
               <a class="btn" href="https://github.com/rishabhsxngh" target="_blank" rel="noreferrer">GitHub</a>
               <a class="btn" href="https://www.linkedin.com/in/rishabhsingh2027" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
@@ -373,6 +373,7 @@
 
           <div class="contact-row">
             <a class="btn primary" href="mailto:rishps@umich.edu">Email me</a>
+            <a class="btn" href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
             <a class="btn" href="https://github.com/rishabhsxngh" target="_blank" rel="noreferrer">GitHub</a>
             <a class="btn" href="https://www.linkedin.com/in/rishabhsingh2027" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
@@ -387,6 +388,7 @@
             <a href="#experience">Experience</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
+            <a href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
           </span>
         </div>
       </footer>
@@ -395,10 +397,8 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Headline typing loop
+      // Fading headline loop
       const el = document.getElementById("headlineType");
-
-      // Header-safe phrases (read cleanly inside your H1)
       const phrases = [
         "build data pipelines",
         "build analytics tools",
@@ -407,45 +407,21 @@
         "turn messy data into decisions"
       ];
 
-      const typingSpeed = 48;
-      const deletingSpeed = 48;
-      const pauseAfterTyped = 950;
-      const pauseAfterDeleted = 220;
+      const holdMs = 2000;
+      const fadeMs = 300;
 
-      let phraseIndex = 0;
-      let charIndex = 0;
-      let deleting = false;
+      let i = 0;
+      el.textContent = phrases[i];
 
-      function tick() {
-        const current = phrases[phraseIndex];
+      setInterval(() => {
+        el.classList.add("is-fading");
 
-        if (!deleting) {
-          charIndex += 1;
-          el.textContent = current.slice(0, charIndex);
-
-          if (charIndex >= current.length) {
-            deleting = true;
-            setTimeout(tick, pauseAfterTyped);
-            return;
-          }
-
-          setTimeout(tick, typingSpeed);
-        } else {
-          charIndex -= 1;
-          el.textContent = current.slice(0, Math.max(0, charIndex));
-
-          if (charIndex <= 0) {
-            deleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            setTimeout(tick, pauseAfterDeleted);
-            return;
-          }
-
-          setTimeout(tick, deletingSpeed);
-        }
-      }
-
-      tick();
+        setTimeout(() => {
+          i = (i + 1) % phrases.length;
+          el.textContent = phrases[i];
+          el.classList.remove("is-fading");
+        }, fadeMs);
+      }, holdMs);
     </script>
   </body>
 </html>
