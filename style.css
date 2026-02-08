@@ -173,26 +173,27 @@ a {
     rgba(67, 217, 173, 0.0)
   );
   animation: sigFade 2.8s ease-in-out infinite;
-  opacity: 0.25;
+  opacity: 0.35;
 }
 
 .sig-2 {
   width: 34px;
   animation-delay: 0.25s;
-  opacity: 0.35;
+  opacity: 0.45;
 }
 
 .sig-3 {
   width: 22px;
   animation-delay: 0.5s;
-  opacity: 0.22;
+  opacity: 0.30;
 }
 
 @keyframes sigFade {
-  0% { opacity: 0.18; }
-  45% { opacity: 0.85; }
-  100% { opacity: 0.18; }
+  0% { opacity: 0.15; }
+  45% { opacity: 1; }
+  100% { opacity: 0.15; }
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   .sig {
