@@ -310,11 +310,12 @@
         </summary>
         <div class="panel">
           <ul>
-            <li>Vision LLM extracts structured listings from photos + SKUs, with Pydantic-validated output and a deterministic risk-tiering engine.</li>
-            <li>Labeled eval harness at 100% category and condition accuracy; tests, linting, CI, Docker for Cloud Run.</li>
+            <li>Vision LLM extracts structured listings from photos + SKUs, with Pydantic-validated output and a deterministic risk-tiering engine that sets verification steps by rule.</li>
+            <li>Labeled eval harness (6/6 category and condition, 1.0 spec recall) drove a prompt fix for mixed-condition lots; tests, linting, CI.</li>
+            <li>Deployed on Google Cloud Run with an intake front end, API key in Secret Manager, scales to zero.</li>
           </ul>
-          <!-- TODO: replace with the repo URL -->
-          <a class="go" href="https://github.com/rishabhsxngh" target="_blank" rel="noreferrer">View on GitHub →</a>
+          <a class="go" href="https://restock-verify-336252879714.us-central1.run.app" target="_blank" rel="noreferrer">Try it live →</a>
+          <a class="go" href="https://github.com/rishabhsxngh/restock-verify" target="_blank" rel="noreferrer" style="margin-left:16px">View on GitHub →</a>
         </div>
       </details>
 
@@ -331,7 +332,8 @@
             <li>Funnel, cohort retention, churn, and MRR from 55k+ events on a DuckDB staging layer.</li>
             <li>Found referral/organic signups activate at 61–67% vs. 43% for social.</li>
           </ul>
-          <a class="go" href="https://github.com/rishabhsxngh/saas-growth-analytics-dashboard" target="_blank" rel="noreferrer">View on GitHub →</a>
+          <a class="go" href="https://rishabh-saas-analytics.streamlit.app" target="_blank" rel="noreferrer">Open dashboard →</a>
+          <a class="go" href="https://github.com/rishabhsxngh/saas-growth-analytics" target="_blank" rel="noreferrer" style="margin-left:16px">View on GitHub →</a>
         </div>
       </details>
 
