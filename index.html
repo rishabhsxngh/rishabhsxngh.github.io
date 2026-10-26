@@ -104,16 +104,17 @@
 
     /* about */
     #about { overflow-x: clip; }
-    .about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 64px; align-items: start; }
+    .about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 56px; align-items: start; }
     .about-text p { margin: 0 0 18px; color: var(--muted); max-width: 34em; }
     .about-text p.first { font-family: var(--serif); font-size: 22px; line-height: 1.45; color: var(--text); }
-    .deck { position: relative; aspect-ratio: 1 / 1; margin-bottom: 36px; }
+    .deck { position: relative; aspect-ratio: 4 / 3; margin-bottom: 36px; }
     .card { position: absolute; inset: 0; margin: 0; border-radius: 4px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35); cursor: pointer; transition: transform .38s cubic-bezier(.2, .7, .2, 1), opacity .25s; }
     .card img { width: 100%; height: 100%; object-fit: cover; }
     .card[data-pos="0"] { transform: none; z-index: 4; }
     .card[data-pos="1"] { transform: translate(12px, 10px) rotate(2.5deg); z-index: 3; }
     .card[data-pos="2"] { transform: translate(-10px, 16px) rotate(-3deg); z-index: 2; }
     .card[data-pos="3"] { transform: translate(16px, 22px) rotate(5deg); z-index: 1; }
+    .card[data-pos="4"] { transform: translate(16px, 22px) rotate(5deg); z-index: 0; opacity: 0; pointer-events: none; }
     .card.leaving { transform: translate(78%, -6%) rotate(12deg); opacity: 0; }
     .card.no-anim { transition: none; }
     .caption { min-height: 3.1em; margin: 0 0 14px; font-family: var(--serif); font-size: 19px; line-height: 1.35; }
@@ -321,16 +322,46 @@
         <div class="shuffle" id="shuffle">
           <div class="deck" id="deck">
             <figure class="card" data-caption="A quiet afternoon with a very good dog.">
-              <img src="assets/img/about-dog.jpg" alt="Sitting on a wooden deck, petting a large husky-type dog, with a lawn and pool behind" width="1000" height="1000" />
+              <img src="assets/img/about-dog.jpg" alt="Sitting on a wooden deck, petting a large husky-type dog, with a lawn behind" width="840" height="630" />
             </figure>
             <figure class="card" data-caption="Knicks game at Madison Square Garden.">
-              <img src="assets/img/about-knicks.jpg" alt="Five people in Knicks gear in the stands at Madison Square Garden" width="1000" height="1000" loading="lazy" />
+              <img src="assets/img/about-knicks.jpg" alt="Five people in Knicks gear in the stands at Madison Square Garden" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
             <figure class="card" data-caption="Game day at Michigan Stadium.">
-              <img src="assets/img/about-stadium.jpg" alt="Michigan Stadium full of fans, with the marching band on the field" width="1000" height="1000" loading="lazy" />
+              <img src="assets/img/about-stadium.jpg" alt="Michigan Stadium packed with fans, with the marching band on the field" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
             <figure class="card" data-caption="Toledo, Spain, with friends.">
-              <img src="assets/img/about-spain.jpg" alt="Five friends standing together on a stone wall above a river and hillside town" width="1000" height="1000" loading="lazy" />
+              <img src="assets/img/about-spain.jpg" alt="Five friends standing together on a stone wall above a river and hillside town" width="840" height="630" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="card" data-caption="Michigan football with the guys.">
+              <img src="assets/img/about-stands.jpg" alt="A group of friends in maize and blue in the stands at a Michigan game" width="840" height="630" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="card" data-caption="Spikeball at the beach.">
+              <img src="assets/img/about-spikeball.jpg" alt="Four people playing Spikeball on a sunny beach" width="840" height="630" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="card" data-caption="Out on the lake at sunset.">
+              <img src="assets/img/about-lake.jpg" alt="Five friends on a boat at sunset holding a wakeboard" width="840" height="630" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="card" data-caption="Meeting some kangaroos.">
+              <img src="assets/img/about-kangaroo.jpg" alt="Crouching on the grass reaching toward kangaroos" width="840" height="630" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="card" data-caption="Night game on the field.">
+              <img src="assets/img/about-soccer.jpg" alt="A group of friends posing on a lit soccer field at night with a ball" width="840" height="630" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="card" data-caption="Everyone out front of the house.">
+              <img src="assets/img/about-house.jpg" alt="A large group of friends standing on the porch and steps of a yellow house" width="840" height="630" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="card" data-caption="A night out with friends.">
+              <img src="assets/img/about-night.jpg" alt="Friends crowded together smiling outside an acai bowl shop at night" width="840" height="630" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="card" data-caption="Summer evening with a big group.">
+              <img src="assets/img/about-driveway.jpg" alt="A large group of friends posing together at dusk with a basketball hoop behind" width="840" height="630" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="card" data-caption="Everyone on stage.">
+              <img src="assets/img/about-stage.jpg" alt="A big group posing on a stage under red and purple lights" width="840" height="630" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="card" data-caption="Dinner out.">
+              <img src="assets/img/about-dinner.jpg" alt="Two people sitting close together at a restaurant table" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
           </div>
           <p class="caption" id="caption" aria-live="polite"></p>
@@ -373,7 +404,7 @@
     cards.forEach(function (c, i) { c.dataset.idx = i; });
 
     function render() {
-      order.forEach(function (c, i) { c.dataset.pos = i; });
+      order.forEach(function (c, i) { c.dataset.pos = Math.min(i, 4); });
       caption.textContent = order[0].dataset.caption;
       count.textContent = (Number(order[0].dataset.idx) + 1) + " of " + cards.length;
     }
