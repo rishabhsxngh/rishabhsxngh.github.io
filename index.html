@@ -243,11 +243,13 @@
 
       <article class="project">
         <div>
-          <h3>NBA prospect scout reports</h3>
+          <h3>College basketball scouting reports</h3>
           <p class="stack">R, Shiny, Plotly</p>
-          <p class="data-note">Simulated data. Shots are generated from scouting priors I set by hand, so this shows the app and method, not real player evaluations.</p>
+          <p class="data-note">Real data. About 540,000 shots from 2,016 players in the 2025-26 season, from ESPN play-by-play. The shots I parse match 98.8% of box-score attempts.</p>
           <ul>
-            <li>For each of 100 college prospects, the app draws a shot chart, summarizes efficiency by zone, assigns an archetype, and suggests NBA comparisons.</li>
+            <li>Builds a scouting report for any player with 150 or more shots: efficiency shot map, zone mix against the league, and percentiles.</li>
+            <li>Separates shot quality (expected points from where a player shoots) from shot-making (actual minus expected, shrunk for small samples).</li>
+            <li>Groups players into six archetypes with k-means and finds the most similar profiles.</li>
           </ul>
           <div class="status">
             <a class="src" href="https://github.com/rishabhsxngh/nba-prospect-evaluation-tool" target="_blank" rel="noreferrer">Source on GitHub</a>
