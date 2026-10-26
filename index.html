@@ -334,46 +334,46 @@
         </div>
         <div class="shuffle" id="shuffle">
           <div class="deck" id="deck">
-            <figure class="card" data-caption="A quiet afternoon with a very good dog.">
+            <figure class="card" data-caption="A quiet afternoon with the man of the house.">
               <img src="assets/img/about-dog.jpg" alt="Sitting on a wooden deck, petting a large husky-type dog, with a lawn behind" width="840" height="630" />
             </figure>
-            <figure class="card" data-caption="Knicks game at Madison Square Garden.">
+            <figure class="card" data-caption="Got priced out of the playoff run, but we didn’t miss a watch party.">
               <img src="assets/img/about-knicks.jpg" alt="Five people in Knicks gear in the stands at Madison Square Garden" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
-            <figure class="card" data-caption="Game day at Michigan Stadium.">
+            <figure class="card" data-caption="Nothing beats a Saturday at the Big House.">
               <img src="assets/img/about-stadium.jpg" alt="Michigan Stadium packed with fans, with the marching band on the field" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
-            <figure class="card" data-caption="Toledo, Spain, with friends.">
+            <figure class="card" data-caption="Toledo, Spain, with some friends during spring break.">
               <img src="assets/img/about-spain.jpg" alt="Five friends standing together on a stone wall above a river and hillside town" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
-            <figure class="card" data-caption="Michigan football with the guys.">
+            <figure class="card" data-caption="Smiling through the pain after a last-second loss to Iowa in the Maize Out game.">
               <img src="assets/img/about-stands.jpg" alt="A group of friends in maize and blue in the stands at a Michigan game" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
-            <figure class="card" data-caption="Spikeball at the beach.">
+            <figure class="card" data-caption="Spikeball at the beach: where the rules are a suggestion and the arguments are mandatory.">
               <img src="assets/img/about-spikeball.jpg" alt="Four people playing Spikeball on a sunny beach" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
-            <figure class="card" data-caption="Out on the lake at sunset.">
+            <figure class="card" data-caption="Wakeboarding at sunset in North Muskegon, Michigan, before school starts up.">
               <img src="assets/img/about-lake.jpg" alt="Five friends on a boat at sunset holding a wakeboard" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
-            <figure class="card" data-caption="Meeting some kangaroos.">
+            <figure class="card" data-caption="Feeding the guy Reginald.">
               <img src="assets/img/about-kangaroo.jpg" alt="Crouching on the grass reaching toward kangaroos" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
-            <figure class="card" data-caption="Night game on the field.">
+            <figure class="card" data-caption="Nothing to smile about after a heartbreaking loss in the IM soccer championship. I’ll get my hands on one of those shirts one day.">
               <img src="assets/img/about-soccer.jpg" alt="A group of friends posing on a lit soccer field at night with a ball" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
-            <figure class="card" data-caption="Everyone out front of the house.">
+            <figure class="card" data-caption="Seniors in front of the house on the first day of class. Never a quiet moment in here.">
               <img src="assets/img/about-house.jpg" alt="A large group of friends standing on the porch and steps of a yellow house" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
-            <figure class="card" data-caption="A night out with friends.">
+            <figure class="card" data-caption="Parading the streets after Michigan dominated March Madness en route to the first championship since 1989. Shock the world, boys!">
               <img src="assets/img/about-night.jpg" alt="Friends crowded together smiling outside an acai bowl shop at night" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
-            <figure class="card" data-caption="Summer evening with a big group.">
+            <figure class="card" data-caption="Scenes after winning the infamous Session 1 vs. Session 2 basketball game at Hindu Heritage Summer Camp.">
               <img src="assets/img/about-driveway.jpg" alt="A large group of friends posing together at dusk with a basketball hoop behind" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
-            <figure class="card" data-caption="Everyone on stage.">
+            <figure class="card" data-caption="Wrapped up a successful three-week session at Hindu Heritage Summer Camp, a camp I first attended at 9 years old, all the way to 2024 as Assistant Director.">
               <img src="assets/img/about-stage.jpg" alt="A big group posing on a stage under red and purple lights" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
-            <figure class="card" data-caption="Dinner out.">
+            <figure class="card" data-caption="Gotta love the free meals when Mom’s in town!">
               <img src="assets/img/about-dinner.jpg" alt="Two people sitting close together at a restaurant table" width="840" height="630" loading="lazy" decoding="async" />
             </figure>
           </div>
@@ -415,6 +415,14 @@
     var busy = false;
 
     cards.forEach(function (c, i) { c.dataset.idx = i; });
+
+    function reserveCaption() {
+      var keep = caption.textContent, max = 0;
+      caption.style.minHeight = "0";
+      cards.forEach(function (c) { caption.textContent = c.dataset.caption; max = Math.max(max, caption.offsetHeight); });
+      caption.textContent = keep;
+      caption.style.minHeight = max + "px";
+    }
 
     function render() {
       order.forEach(function (c, i) { c.dataset.pos = Math.min(i, 4); });
@@ -463,6 +471,8 @@
     });
 
     render();
+    reserveCaption();
+    window.addEventListener("resize", reserveCaption);
   })();
 </script>
 <script>
