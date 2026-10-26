@@ -231,10 +231,13 @@
             <li>Compares penalty margin with win rate, flags outlier teams by z-score, and splits results by home and away games.</li>
           </ul>
           <div class="status">
+            <button class="try" type="button" data-embed="nfl-embed" data-src="https://01a179ca-957f-4234-8a71-6278fc3c0248.share.connect.posit.cloud/" data-title="NFL penalty margin app" data-open="Try the app here" data-close="Hide the app" aria-expanded="false" aria-controls="nfl-embed">Try the app here</button>
+            <a class="src" href="https://01a179ca-957f-4234-8a71-6278fc3c0248.share.connect.posit.cloud/" target="_blank" rel="noreferrer">Open in a new tab</a>
             <a class="src" href="https://github.com/rishabhsxngh/NFL-Analysis" target="_blank" rel="noreferrer">Source on GitHub</a>
-            <span class="note">No hosted demo yet</span>
+            <span class="note">May take a few seconds to start</span>
           </div>
         </div>
+        <div class="embed" id="nfl-embed" hidden></div>
       </article>
 
       <article class="project">
@@ -463,7 +466,7 @@
 </script>
 <script>
 (function () {
-  var btn = document.querySelector('button.try'), box = document.getElementById('tableau-embed'), loaded = false;
+  var btn = document.querySelector('button.try:not([data-embed])'), box = document.getElementById('tableau-embed'), loaded = false;
   if (!btn || !box) return;
   btn.addEventListener('click', function () {
     var open = box.hidden;
@@ -488,6 +491,28 @@
     var sc = document.createElement('script');
     sc.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
     viz.parentNode.insertBefore(sc, viz);
+  });
+})();
+</script>
+<script>
+(function () {
+  document.querySelectorAll('button.try[data-embed]').forEach(function (btn) {
+    var box = document.getElementById(btn.getAttribute('data-embed')), loaded = false;
+    if (!box) return;
+    btn.addEventListener('click', function () {
+      var open = box.hidden;
+      box.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? btn.getAttribute('data-close') : btn.getAttribute('data-open');
+      if (!open || loaded) return;
+      loaded = true;
+      var f = document.createElement('iframe');
+      f.src = btn.getAttribute('data-src');
+      f.title = btn.getAttribute('data-title');
+      f.loading = 'lazy';
+      f.style.cssText = 'width:100%;height:820px;border:0;background:#fff;display:block';
+      box.appendChild(f);
+    });
   });
 })();
 </script>
