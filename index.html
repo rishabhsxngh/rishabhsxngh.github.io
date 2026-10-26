@@ -84,6 +84,12 @@
     .status .live:hover { color: var(--accent); }
     .status a.src { color: var(--muted); text-underline-offset: 3px; }
     .status a.src:hover { color: var(--text); }
+    .status button.try { font: inherit; font-weight: 600; color: var(--text); background: none; border: 0; border-bottom: 1px solid var(--accent); padding: 0 0 1px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+    .status button.try::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .status button.try:hover { color: var(--accent); }
+    .embed { grid-column: 1 / -1; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); padding: 10px; overflow: hidden; }
+    .embed[hidden] { display: none; }
+    .embed .tableauPlaceholder { width: 100%; }
     .status .note { color: var(--faint); }
     .data-note { margin: 0 0 16px; padding-left: 12px; border-left: 2px solid var(--line); color: var(--muted); font-size: 14.5px; }
 
@@ -206,12 +212,14 @@
             <li>In the simulated data, referral and organic signups activate at 61 to 67 percent, against 43 percent for social.</li>
           </ul>
           <div class="status">
-            <a class="live" href="https://public.tableau.com/views/SaaSGrowthAnalytics/AcquisitionPerformance?:language=en-US&amp;:display_count=n" target="_blank" rel="noreferrer">Tableau dashboard</a>
+            <button class="try" type="button" aria-expanded="false" aria-controls="tableau-embed">Try the dashboard here</button>
+            <a class="src" href="https://public.tableau.com/views/SaaSGrowthAnalytics/AcquisitionPerformance?:language=en-US&amp;:display_count=n" target="_blank" rel="noreferrer">Open in Tableau</a>
             <a class="src" href="https://rishabh-saas-analytics.streamlit.app" target="_blank" rel="noreferrer">Streamlit app</a>
             <a class="src" href="https://github.com/rishabhsxngh/saas-growth-analytics" target="_blank" rel="noreferrer">Source on GitHub</a>
             <span class="note">Streamlit may need a few seconds to wake up</span>
           </div>
         </div>
+        <div class="embed" id="tableau-embed" hidden></div>
       </article>
 
       <article class="project">
@@ -452,6 +460,36 @@
 
     render();
   })();
+</script>
+<script>
+(function () {
+  var btn = document.querySelector('button.try'), box = document.getElementById('tableau-embed'), loaded = false;
+  if (!btn || !box) return;
+  btn.addEventListener('click', function () {
+    var open = box.hidden;
+    box.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Hide the dashboard' : 'Try the dashboard here';
+    if (!open || loaded) return;
+    loaded = true;
+    var id = 'viz-saas';
+    var w = Math.max(280, box.clientWidth - 22);
+    var h = w > 700 ? Math.round(w * 0.827) + 30 : 727;
+    box.innerHTML = "<div class='tableauPlaceholder' id='" + id + "' style='position:relative'>" +
+      "<noscript><a href='https://public.tableau.com/views/SaaSGrowthAnalytics/AcquisitionPerformance'>Open the dashboard on Tableau Public</a></noscript>" +
+      "<object class='tableauViz' style='display:none;'>" +
+      "<param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /><param name='embed_code_version' value='3' /><param name='site_root' value='' />" +
+      "<param name='name' value='SaaSGrowthAnalytics&#47;AcquisitionPerformance' /><param name='tabs' value='no' /><param name='toolbar' value='yes' />" +
+      "<param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sa&#47;SaaSGrowthAnalytics&#47;AcquisitionPerformance&#47;1.png' />" +
+      "<param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' />" +
+      "<param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>";
+    var div = document.getElementById(id), viz = div.getElementsByTagName('object')[0];
+    viz.style.width = w + 'px'; viz.style.height = h + 'px';
+    var sc = document.createElement('script');
+    sc.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    viz.parentNode.insertBefore(sc, viz);
+  });
+})();
 </script>
 </body>
 </html>
