@@ -102,6 +102,27 @@
     dl.skills dt { color: var(--faint); font-size: 14.5px; }
     dl.skills dd { margin: 0; color: var(--text); }
 
+    /* about */
+    #about { overflow-x: clip; }
+    .about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 64px; align-items: start; }
+    .about-text p { margin: 0 0 18px; color: var(--muted); max-width: 34em; }
+    .about-text p.first { font-family: var(--serif); font-size: 22px; line-height: 1.45; color: var(--text); }
+    .deck { position: relative; aspect-ratio: 1 / 1; margin-bottom: 36px; }
+    .card { position: absolute; inset: 0; margin: 0; border-radius: 4px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35); cursor: pointer; transition: transform .38s cubic-bezier(.2, .7, .2, 1), opacity .25s; }
+    .card img { width: 100%; height: 100%; object-fit: cover; }
+    .card[data-pos="0"] { transform: none; z-index: 4; }
+    .card[data-pos="1"] { transform: translate(12px, 10px) rotate(2.5deg); z-index: 3; }
+    .card[data-pos="2"] { transform: translate(-10px, 16px) rotate(-3deg); z-index: 2; }
+    .card[data-pos="3"] { transform: translate(16px, 22px) rotate(5deg); z-index: 1; }
+    .card.leaving { transform: translate(78%, -6%) rotate(12deg); opacity: 0; }
+    .card.no-anim { transition: none; }
+    .caption { min-height: 3.1em; margin: 0 0 14px; font-family: var(--serif); font-size: 19px; line-height: 1.35; }
+    .deck-controls { display: flex; align-items: center; gap: 10px; }
+    .deck-controls button { font: inherit; font-size: 15px; font-weight: 600; padding: 8px 14px; border-radius: 4px; border: 1px solid var(--line); background: transparent; color: var(--text); cursor: pointer; }
+    .deck-controls button:hover { border-color: var(--muted); }
+    .deck-controls button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .deck-controls .count { margin-left: auto; color: var(--faint); font-size: 14.5px; }
+
     /* contact */
     .contact p { color: var(--muted); max-width: 34em; margin: 0 0 22px; }
     footer { padding: 72px 0 48px; color: var(--faint); font-size: 14px; }
@@ -109,15 +130,18 @@
     @media (max-width: 760px) {
       .wrap { width: calc(100% - 40px); }
       .top .home { display: none; }
-      .top nav { width: 100%; justify-content: space-between; }
+      .top nav { width: 100%; justify-content: space-between; flex-wrap: wrap; row-gap: 2px; font-size: 13px; }
+      .deck { width: calc(100% - 28px); }
       .intro { grid-template-columns: 1fr; gap: 28px; padding-top: 40px; }
       .intro .photo { order: -1; }
       .intro .photo img { width: 104px; height: 130px; }
       section { padding-top: 56px; }
       .project.has-shot { grid-template-columns: 1fr; gap: 20px; }
       .role, dl.skills div { grid-template-columns: 1fr; gap: 2px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-text p.first { font-size: 20px; }
     }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card { transition: none; } }
   </style>
 </head>
 <body>
@@ -129,6 +153,7 @@
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -285,6 +310,39 @@
       </dl>
     </section>
 
+    <section id="about">
+      <h2>About</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="first">I got into data through fantasy football. I wanted to test ideas that spreadsheets couldn't handle, so I built my models in R instead.</p>
+          <p>Basketball is the area I care about most, and I'm a member of the Michigan Sports Analytics Society. I'd like to work in basketball analytics.</p>
+          <p>Good Karma Engineering started at the beginning of the pandemic, when my brother and I were messing around with a 3D printer. It grew into a volunteer group that designs and prints prosthetic devices, and we've delivered 50+ of them in multiple countries.</p>
+        </div>
+        <div class="shuffle" id="shuffle">
+          <div class="deck" id="deck">
+            <figure class="card" data-caption="A quiet afternoon with a very good dog.">
+              <img src="assets/img/about-dog.jpg" alt="Sitting on a wooden deck, petting a large husky-type dog, with a lawn and pool behind" width="1000" height="1000" />
+            </figure>
+            <figure class="card" data-caption="Knicks game at Madison Square Garden.">
+              <img src="assets/img/about-knicks.jpg" alt="Five people in Knicks gear in the stands at Madison Square Garden" width="1000" height="1000" loading="lazy" />
+            </figure>
+            <figure class="card" data-caption="Game day at Michigan Stadium.">
+              <img src="assets/img/about-stadium.jpg" alt="Michigan Stadium full of fans, with the marching band on the field" width="1000" height="1000" loading="lazy" />
+            </figure>
+            <figure class="card" data-caption="Toledo, Spain, with friends.">
+              <img src="assets/img/about-spain.jpg" alt="Five friends standing together on a stone wall above a river and hillside town" width="1000" height="1000" loading="lazy" />
+            </figure>
+          </div>
+          <p class="caption" id="caption" aria-live="polite"></p>
+          <div class="deck-controls">
+            <button type="button" id="prev" aria-label="Previous photo">Previous</button>
+            <button type="button" id="next" aria-label="Next photo">Next photo</button>
+            <span class="count" id="count"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" class="contact">
       <h2>Contact</h2>
       <p>I'm in Ann Arbor, from Long Island, and open to relocating. Email is the quickest way to reach me.</p>
@@ -300,6 +358,68 @@
   </footer>
 </div>
 
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  (function () {
+    var deck = document.getElementById("deck");
+    var cards = Array.prototype.slice.call(deck.querySelectorAll(".card"));
+    var caption = document.getElementById("caption");
+    var count = document.getElementById("count");
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var order = cards.slice();
+    var busy = false;
+
+    cards.forEach(function (c, i) { c.dataset.idx = i; });
+
+    function render() {
+      order.forEach(function (c, i) { c.dataset.pos = i; });
+      caption.textContent = order[0].dataset.caption;
+      count.textContent = (Number(order[0].dataset.idx) + 1) + " of " + cards.length;
+    }
+
+    function next() {
+      if (busy) return;
+      busy = true;
+      var top = order[0];
+      top.classList.add("leaving");
+      setTimeout(function () {
+        order.push(order.shift());
+        top.classList.add("no-anim");
+        render();
+        void top.offsetWidth;
+        top.classList.remove("leaving", "no-anim");
+        busy = false;
+      }, reduce ? 0 : 260);
+    }
+
+    function prev() {
+      if (busy) return;
+      busy = true;
+      var back = order[order.length - 1];
+      back.classList.add("no-anim", "leaving");
+      order.unshift(order.pop());
+      render();
+      void back.offsetWidth;
+      back.classList.remove("no-anim");
+      requestAnimationFrame(function () {
+        back.classList.remove("leaving");
+        setTimeout(function () { busy = false; }, reduce ? 0 : 380);
+      });
+    }
+
+    document.getElementById("next").addEventListener("click", next);
+    document.getElementById("prev").addEventListener("click", prev);
+    deck.addEventListener("click", function (e) {
+      if (e.target.closest(".card") === order[0]) next();
+    });
+    document.getElementById("shuffle").addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { next(); }
+      if (e.key === "ArrowLeft") { prev(); }
+    });
+
+    render();
+  })();
+</script>
 </body>
 </html>
