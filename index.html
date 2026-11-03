@@ -185,6 +185,22 @@
       <h2>Projects</h2>
       <p class="section-note">Each project has a demo you can open and the code behind it. Every card says whether its data is real or simulated.</p>
 
+      <article class="project">
+        <div>
+          <h3>CFPB complaints assistant</h3>
+          <p class="stack">Python, DuckDB, FastAPI, Claude API, Docker</p>
+          <p class="data-note">Real data. A 60,000-complaint sample of CFPB mortgage and credit reporting complaints from January 2024 to June 2026, from a public copy of the database.</p>
+          <ul>
+            <li>Answers questions about what consumers reported, with a citation for each claim. It retrieves with embeddings and keyword search combined, and says so when the evidence is missing instead of guessing.</li>
+            <li>Counting questions go to a restricted SQL tool: the model fills in a small validated spec and never writes SQL. Citations that point at complaints it did not retrieve are removed.</li>
+            <li>Includes a data-quality report that counts every dropped row by reason, an evaluation harness, tests, and CI.</li>
+          </ul>
+          <div class="status">
+            <a class="src" href="https://github.com/rishabhsxngh/cfpb-rag" target="_blank" rel="noreferrer">Source on GitHub</a>
+          </div>
+        </div>
+      </article>
+
       <article class="project has-shot">
         <div class="shot"><img src="assets/img/restock-app.jpg" alt="ReStock Verify result: a drywall listing draft flagged high risk, with its verification steps" /></div>
         <div>
